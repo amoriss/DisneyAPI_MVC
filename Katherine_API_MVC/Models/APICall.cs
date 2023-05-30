@@ -6,14 +6,14 @@ namespace Katherine_API_MVC.Models;
 
 public class APICall
 {
-    public static Root Name()
+    public static Root Name(string url)
     {
         var client = new HttpClient();
 
 
-        var mickeyUrl = "https://api.disneyapi.dev/character";
+        //var mickeyUrl = "https://api.disneyapi.dev/character";
 
-        var mickeyResponse = client.GetStringAsync(mickeyUrl).Result;
+        var mickeyResponse = client.GetStringAsync(url).Result;
 
         //var mickeyObject = JObject.Parse(mickeyResponse);
 

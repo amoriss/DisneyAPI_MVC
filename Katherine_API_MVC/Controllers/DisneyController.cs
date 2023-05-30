@@ -5,18 +5,21 @@ using Newtonsoft.Json;
 namespace Katherine_API_MVC.Controllers;
 public class DisneyController : Controller
 {
-    public IActionResult Index([FromQuery(Name = "resource_url")] string resourceUrl = "https://api.disneyapi.dev/character")
+    public IActionResult Index([FromQuery(Name = "disney_url")] string resourceUrl = "https://api.disneyapi.dev/character")
     {
-        
-            var client = new HttpClient();
 
-            var url = resourceUrl;
+        //var client = new HttpClient();
 
-            var response = client.GetStringAsync(url).Result;
+        //var url = resourceUrl;
 
-            var root = JsonConvert.DeserializeObject<Root>(response);
+        //var response = client.GetStringAsync(url).Result;
 
-            return View(root);
+        //var root = JsonConvert.DeserializeObject<Root>(response);
+
+        //return View(root);
+
+        var data = APICall.Name(resourceUrl);
+        return View(data);
         
     }
     //public IActionResult Index(/*[FromQuery(Name = "resource_url")] string resourceUrl = "https://rickandmortyapi.com/api/character"*/)

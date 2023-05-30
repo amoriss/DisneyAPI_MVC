@@ -3,19 +3,31 @@
 
 <body>
     <header>
+
+        @if (@Model.info.previousPage != null)
+        {
+            <a asp-action="Index" asp-route-disney_url="@Model.info.previousPage" class="btn btn-lg btn-success">Previous Page</a>
+        }
+        @if (@Model.info.nextPage != null)
+        {
+            <a asp-action="Index" asp-route-disney_url="@Model.info.nextPage" class="btn btn-lg btn-success">Next Page</a>
+        }
+
+    </header>
+    <section>
         <div class="charCollection">
             @foreach (var character in Model.data)
             {
                 <ul style="list-style:none" class="card">
-                    <li><img src=@character.imageUrl></li>
-                    <li style="color:chartreuse"><b>Name: @character.Name</b></li>
-                    <li style="color:chartreuse">More info:<a href="@character.sourceUrl"> @character.sourceUrl</a></li>
+                    <li><a href="@character.sourceUrl" target="_blank"><img src="@character.imageUrl" class="custom-image"></a></li>
+                    <li class="character-name-label"><b>Name: @character.Name</b></li>
+                    <li>More info:<a href="@character.sourceUrl" target="_blank"> @character.sourceUrl</a></li>
                     @*<h2 class="text-center">Website: <a href="@item.website_url">@item.website_url</a></h2>*@
-                   @* @foreach (var item in character.allies)
-                    {
-                        <li style="color:chartreuse">Allies: @item</li>
-                    }
-*@
+                    @* @foreach (var item in character.allies)
+                {
+                <li style="color:chartreuse">Allies: @item</li>
+                }
+                *@
                     @*<li style="color:chartreuse">Type: @character.imageUrl</li>
                 <li style="color:chartreuse">Status: @character.Status</li>
                 <li style="color:chartreuse">Origin: @character.Origin.Name</li>
@@ -23,16 +35,18 @@
                 </ul>
             }
         </div>
-        <div>
 
-            @if (@Model.info.previousPage != null)
-            {
-                <a asp-action="Index" asp-route-resource_url="@Model.info.previousPage" class="btn btn-lg btn-success">Previous Page</a>
-            }
-            @if (@Model.info.nextPage != null)
-            {
-                <a asp-action="Index" asp-route-resource_url="@Model.info.nextPage" class="btn btn-lg btn-success">Next Page</a>
-            }
-        </div>
-    </header>
+    </section>
+    <footer>
+
+        @if (@Model.info.previousPage != null)
+        {
+            <a asp-action="Index" asp-route-disney_url="@Model.info.previousPage" class="btn btn-lg btn-success">Previous Page</a>
+        }
+        @if (@Model.info.nextPage != null)
+        {
+            <a asp-action="Index" asp-route-disney_url="@Model.info.nextPage" class="btn btn-lg btn-success button-color">Next Page</a>
+        }
+
+    </footer>
 </body>
